@@ -1539,6 +1539,38 @@
       });
     }
   </script>
+<script>
+function gtag_report_conversion(url, target) {
+  var navigated = false;
 
+  var callback = function () {
+    if (navigated) return;
+    navigated = true;
+
+    if (typeof url !== 'undefined') {
+      if (target === '_blank') {
+        window.open(url, '_blank', 'noopener');
+      } else {
+        window.location.href = url;
+      }
+    }
+  };
+
+  gtag('event', 'conversion', {
+    'send_to': 'AW-626585354/BFVcCL2K_KAcEIre46oC',
+    'event_callback': callback
+  });
+
+  setTimeout(callback, 800);
+  return false;
+}
+
+document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"]').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    gtag_report_conversion(this.href, this.target);
+  });
+});
+</script>
 </body>
 </html>
